@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Rightpurge",
+  "description": "Block harmful extremist websites and shield yourself from toxic content with Rightpurge.",
+  "version": "1.0.1",
+  "author": "Sectorfive",
+  "icons": {
+    "48": "icons/icon.png"
+  },
+  "background": {
+    "scripts": [
+      "background_script.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "<all_urls>",
+    "tabs"
+  ],
+  "web_accessible_resources": [
+    "blocked.html"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{b9632fbd-caf2-46de-80ff-0f6b7a143013}"
+    }
+  }
+}

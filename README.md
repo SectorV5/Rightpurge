@@ -1,2 +1,2 @@
 # Rightpurge
-Block harmful extremist websites and shield yourself from toxic content with Rightpurge.
+Rightpurge is a browser extension that blocks Nazi and right-wing extremist websites, protecting you from hate speech and harmful content. It prevents connections to listed sites, ensuring they don’t load or track your IP. Users can manage a custom blocklist via an intuitive popup, adding or removing sites with ease. Blocking is enforced before any network request reaches the site. Rightpurge is open-source, licensed under GPLv3.

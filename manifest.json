@@ -1,11 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "Rightpurge",
-  "description": "Block harmful extremist websites and shield yourself from toxic content with Rightpurge.",
-  "version": "1.0.1",
+  "name": "Straznik",
+  "version": "1.0.3",
   "author": "Sectorfive",
   "icons": {
-    "48": "icons/icon.png"
+    "64": "icons/icon.png"
   },
   "background": {
     "scripts": [
@@ -25,11 +24,10 @@
     "tabs"
   ],
   "web_accessible_resources": [
-    "blocked.html"
+    "blocked.html",
+    "blocked.js",
+    "icons/icon.png"
   ],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{b9632fbd-caf2-46de-80ff-0f6b7a143013}"
-    }
-  }
+  "content_security_policy": "script-src 'self'; object-src 'none'",
+  "browser_specific_settings": {}
 }

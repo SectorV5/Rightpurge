@@ -10,7 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
             siteList.innerHTML = '';
             sites.forEach((site, index) => {
                 const li = document.createElement('li');
-                li.textContent = site.pattern;
+                li.className = 'site-item';
+
+                const patternSpan = document.createElement('span');
+                patternSpan.textContent = site.pattern;
+                patternSpan.style.flexGrow = '1';
+
+                const controls = document.createElement('div');
+                controls.className = 'controls';
+
                 const toggle = document.createElement('input');
                 toggle.type = 'checkbox';
                 toggle.checked = site.enabled;
@@ -18,7 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     sites[index].enabled = toggle.checked;
                     chrome.storage.local.set({ blockedSites: sites });
                 });
-                li.appendChild(toggle);
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.innerHTML = '&times;';
+                deleteBtn.addEventListener('click', () => {
+                    const updatedSites = sites.filter((_, i) => i !== index);
+                    chrome.storage.local.set({ blockedSites: updatedSites }, loadSites);
+                });
+
+                controls.appendChild(toggle);
+                controls.appendChild(deleteBtn);
+
+                li.appendChild(patternSpan);
+                li.appendChild(controls);
                 siteList.appendChild(li);
             });
 
@@ -32,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         let newSite = newSiteInput.value.trim();
         if (!newSite) return;
-
         const basePattern = `*://${newSite}/*`;
         const subdomainPattern = `*://*.${newSite}/*`;
 
